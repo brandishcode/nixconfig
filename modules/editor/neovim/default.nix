@@ -8,6 +8,7 @@
       inherit system; 
       modules = [
         ./nixvimModules/baseConfig.nix 
+        ./nixvimModules/keyMappings.nix 
       ];
     }; 
   in
