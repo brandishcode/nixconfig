@@ -18,10 +18,12 @@
         # key mappings
         ./nixvimModules/keyMappings/cmp.nix
         ./nixvimModules/keyMappings/fugitive.nix
+        ./nixvimModules/keyMappings/undotree.nix
 
         # plugins
         ./nixvimModules/plugins/cmp.nix
         ./nixvimModules/plugins/fugitive.nix
+        ./nixvimModules/plugins/undotree.nix
       ];
     }; 
   in
