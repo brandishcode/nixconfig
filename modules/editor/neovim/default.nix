@@ -6,6 +6,9 @@
     let
     configuration = nixvimLib.evalNixvim {
       inherit system; 
+      extraSpecialArgs = {
+        nixvimLib = nixvimLib.nixvim;
+      };
       modules = [
         # defaults
         ./nixvimModules/baseConfig.nix 
