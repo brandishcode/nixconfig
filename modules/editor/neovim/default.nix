@@ -9,6 +9,7 @@
       modules = [
         ./nixvimModules/baseConfig.nix 
         ./nixvimModules/keyMappings.nix 
+        ./nixvimModules/plugins
       ];
     }; 
   in
