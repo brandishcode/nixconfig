@@ -19,11 +19,13 @@
         ./nixvimModules/keyMappings/cmp.nix
         ./nixvimModules/keyMappings/fugitive.nix
         ./nixvimModules/keyMappings/undotree.nix
+        ./nixvimModules/keyMappings/telescope.nix
 
         # plugins
         ./nixvimModules/plugins/cmp.nix
         ./nixvimModules/plugins/fugitive.nix
         ./nixvimModules/plugins/undotree.nix
+        ./nixvimModules/plugins/telescope.nix
       ];
     }; 
   in
