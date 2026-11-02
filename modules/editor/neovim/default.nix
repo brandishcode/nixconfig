@@ -14,9 +14,11 @@
 
         # key mappings
         ./nixvimModules/keyMappings/cmp.nix
+        ./nixvimModules/keyMappings/fugitive.nix
 
         # plugins
         ./nixvimModules/plugins/cmp.nix
+        ./nixvimModules/plugins/fugitive.nix
       ];
     }; 
   in
