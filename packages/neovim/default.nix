@@ -1,35 +1,31 @@
-{ ... }:
+{ self, inputs, ... }:
 
 {
-  imports = [ ./nixvimLib.nix ];
-  perSystem = { system, nixvimLib, ... }:
-    let
-    configuration = nixvimLib.evalNixvim {
-      inherit system; 
-      extraSpecialArgs = {
-        nixvimLib = nixvimLib.nixvim;
-      };
-      modules = [
-        # defaults
-        ./nixvimModules/baseConfig.nix 
-        ./nixvimModules/keyMappings
-        ./nixvimModules/plugins
+  perSystem = { system, ... }: {
+    packages.neovim = (inputs.nixvim.lib.evalNixvim {
+        inherit system; 
 
-        # key mappings
-        ./nixvimModules/keyMappings/cmp.nix
-        ./nixvimModules/keyMappings/fugitive.nix
-        ./nixvimModules/keyMappings/undotree.nix
-        ./nixvimModules/keyMappings/telescope.nix
+        modules = [
+          # defaults
+          self.modules.nixvim.base-config
 
-        # plugins
-        ./nixvimModules/plugins/cmp.nix
-        ./nixvimModules/plugins/fugitive.nix
-        ./nixvimModules/plugins/undotree.nix
-        ./nixvimModules/plugins/telescope.nix
-      ];
-    }; 
-  in
-  {
-    packages.neovim = configuration.config.build.package;
+          # plugins
+          self.modules.nixvim.plugin-cmp
+          self.modules.nixvim.plugin-fugitive
+          self.modules.nixvim.plugin-undotree
+          self.modules.nixvim.plugin-telescope
+        ];
+      }).config.build.package;
   };
+
+  imports = [
+    ./plugins/cmp.nix
+    ./plugins/fugitive.nix
+    ./plugins/undotree.nix
+    ./plugins/telescope.nix
+
+    ./baseConfig.nix
+  ];
+
+
 }
