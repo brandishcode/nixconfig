@@ -6,7 +6,6 @@ let
     ./desktop-environment-options.nix
     ./theme-options.nix
     ./directory-options.nix
-    ./systemd-boot-options.nix
   ];
 in
 {

@@ -2,26 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
-
-  # Include the results of the hardware scan.
-  # Include home-manager
-  imports = [
-    ./hardware-configuration.nix
-    ./audio.nix
-    ./security.nix
-  ];
-
   config = {
-    # Bootloader.
-    boot.loader.systemd-boot = {
+    # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+    # (the default) this is the recommended approach. When using systemd-networkd it's
+    # still possible to use this option, but it's recommended to use it in conjunction
+    # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+    networking.useDHCP = lib.mkDefault true;
+    # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+    # networking.interfaces.wlp4s0.useDHCP = lib.mkDefault true;
+
+    hardware.bluetooth = {
       enable = true;
-      extraEntries = config.systemd-boot-entry1;
+      powerOnBoot = true;
     };
-    boot.loader.efi.canTouchEfiVariables = true;
-    networking.hostName = config.hostname; # Define your hostname.
+
+    # Bootloader.
+    networking.hostName = "nixos"; # Define your hostname.
     # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networking = {
       interfaces.enp3s0 = {
@@ -115,50 +114,9 @@
     };
 
     services.xserver.desktopManager.runXdgAutostartIfNone = true;
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    # environment.systemPackages = with pkgs; [ ];
-    environment.shellAliases = {
-
-    };
     services.udev.packages = with pkgs; [
       vial
       via
-    ];
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
-    # List services that you want to enable:
-
-    # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
-
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
-
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    system.stateVersion = "24.05"; # Did you read the comment?
-
-    # enable flakes
-    nix.settings.bash-prompt-prefix = "\\[\\033[43m\\]\\[\\033[1;30m\\](nix-develop)";
-    nix.settings.experimental-features = [
-      "nix-command"
-      "flakes"
     ];
 
     services.openssh = {
