@@ -1,7 +1,7 @@
-top-level@{ withSystem, inputs , ... }:
+top-level@{ self, withSystem, inputs , ... }:
 
 {
-  flake.homeModules.developer = { pkgs, ... }: {
+  flake.homeModules.developer = { ... }: {
     home.homeDirectory = "/home/developer";
       home.username = "developer";
       home.stateVersion = "25.05";
@@ -47,7 +47,17 @@ top-level@{ withSystem, inputs , ... }:
     in
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
-        ({ ... }: {
+        ({ modulesPath, ... }: {
+          imports = [
+            (modulesPath + "/installer/scan/not-detected.nix")
+          ];
+          system.stateVersion = "24.05";
+          nix.settings.bash-prompt-prefix = "\\[\\033[43m\\]\\[\\033[1;30m\\](nix-develop)";
+          nix.settings.experimental-features = [
+            "nix-command"
+            "flakes"
+          ];
+          nixpkgs.hostPlatform = "x86_64-linux";
           nixpkgs.overlays = [
             inputs.nur.overlays.default
           ];
@@ -56,6 +66,9 @@ top-level@{ withSystem, inputs , ... }:
             "gtk+".broken = "warn"; # or "ignore"
           };
         })
+        self.modules.nixos.file-systems
+        self.modules.nixos.graphics
+        self.modules.nixos.boot
         ./options
         ./sops.nix
         ./system
@@ -71,6 +84,20 @@ top-level@{ withSystem, inputs , ... }:
           home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
           home-manager.users.developer = top-level.config.flake.homeModules.developer;
         }
+        {
+          security.pam.services.swaylock = {
+            text = ''
+              auth include login
+            '';
+          };
+        }
       ];
     });
+  
+  imports = [
+    ./boot.nix
+    ./graphics.nix
+    ./fileSystems.nix
+    ./audio.nix
+  ];
 }

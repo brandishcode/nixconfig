@@ -1,7 +1,7 @@
-{ pkgs, config, ... }:
+{ ... }:
 
 {
-  config = {
+  flake.modules.nixos.audio = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cdrtools
       alsa-utils
@@ -18,7 +18,7 @@
     };
     services.mpd = {
       enable = true;
-      musicDirectory = config.musicDirectory;
+      musicDirectory = "/documents/nixos/music";
       network.listenAddress = "any";
       user = "developer";
       # settings = ''
