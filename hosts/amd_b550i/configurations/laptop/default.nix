@@ -15,5 +15,4 @@ in
     desktop-environment
     display
   ];
-  gpu = "intel";
 }
