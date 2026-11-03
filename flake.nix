@@ -16,13 +16,16 @@
       imports = [
         inputs.home-manager.flakeModules.home-manager
 
-        ./modules/hosts/test
-        ./modules/hosts/amd_b550i
-        ./modules
+        # nixos configurations per host
+        ./hosts/test
+        ./hosts/amd_b550i
 
-        #  home-manager programs
+        # home-manager programs
         ./home-manager/programs/bash.nix
         ./home-manager/programs/fcitx5.nix
+
+        # packages
+        ./packages
       ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
     };
