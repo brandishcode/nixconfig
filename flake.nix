@@ -13,8 +13,7 @@
       imports = [
         inputs.home-manager.flakeModules.home-manager
 
-        ./modules/nixos
-        ./modules/home-manager
+        ./modules/hosts/test
         ./modules
       ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
