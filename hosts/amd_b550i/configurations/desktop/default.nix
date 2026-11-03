@@ -15,5 +15,4 @@ in
     display
     desktop-environment
   ];
-  gpu = "amd";
 }

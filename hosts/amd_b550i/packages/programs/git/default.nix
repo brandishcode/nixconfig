@@ -7,8 +7,8 @@
         enable = true;
         settings = {
           user = {
-            name = config.git.username;
-            email = config.git.useremail;
+            name = "brandishcode";
+            email = "brandishcode@gmail.com";
           };
           init.defaultBranch = "main";
         };
