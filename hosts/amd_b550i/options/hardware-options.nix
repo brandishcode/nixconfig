@@ -2,13 +2,6 @@
 
 {
   options = {
-    gpu = lib.mkOption {
-      default = "amd";
-      description = ''
-        Graphics Card
-      '';
-      type = lib.types.str;
-    };
     monitor = lib.mkOption {
       default = [
         {
