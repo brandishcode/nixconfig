@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.graphics = { modulesPath, ... }: {
+  flake.nixosModules.amd_b550i = { modulesPath, ... }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];

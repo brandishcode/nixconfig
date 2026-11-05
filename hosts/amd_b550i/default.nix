@@ -1,4 +1,4 @@
-top-level@{ self, withSystem, inputs , ... }:
+{ self, withSystem, inputs , ... }:
 
 {
   flake.homeModules.developer = { ... }: {
@@ -24,7 +24,7 @@ top-level@{ self, withSystem, inputs , ... }:
           };
         }
 	{
-	   home.packages = [ top-level.config.flake.packages.x86_64-linux.neovim ];	
+	   home.packages = [ self.packages.x86_64-linux.neovim ];	
 	}
       ];
     };
@@ -66,9 +66,7 @@ top-level@{ self, withSystem, inputs , ... }:
             "gtk+".broken = "warn"; # or "ignore"
           };
         })
-        self.modules.nixos.file-systems
-        self.modules.nixos.graphics
-        self.modules.nixos.boot
+        self.nixosModules.amd_b550i
         ./options
         ./sops.nix
         ./system
@@ -82,7 +80,7 @@ top-level@{ self, withSystem, inputs , ... }:
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = args;
           home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
-          home-manager.users.developer = top-level.config.flake.homeModules.developer;
+          home-manager.users.developer = self.homeModules.developer;
         }
         {
           security.pam.services.swaylock = {
