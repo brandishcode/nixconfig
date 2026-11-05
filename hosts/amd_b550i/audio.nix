@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.audio = { pkgs, ... }: {
+  flake.nixosModules.amd_b550i = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       cdrtools
       alsa-utils

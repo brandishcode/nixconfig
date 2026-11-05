@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.boot = {
+  flake.nixosModules.amd_b550i = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.systemd-boot.extraEntries = {
       "arch.conf" = ''
