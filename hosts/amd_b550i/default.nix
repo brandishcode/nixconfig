@@ -1,7 +1,18 @@
 { self, withSystem, inputs , ... }:
 
+let
+  nixPkgsConfig = {
+    nixpkgs.overlays = [
+      inputs.nur.overlays.default
+    ];
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.problems.handlers = {
+      "gtk+".broken = "warn"; # or "ignore"
+    };
+  };
+in
 {
-  flake.homeModules.developer = { ... }: {
+  flake.homeModules.developer = { pkgs, ... }: {
     home.homeDirectory = "/home/developer";
       home.username = "developer";
       home.stateVersion = "25.05";
@@ -14,6 +25,7 @@
         };
       };
       imports = [
+        inputs.sops-nix.homeManagerModules.sops
         ./packages
         {
           config = {
@@ -23,21 +35,30 @@
             sops.secrets."git_token/public_repo" = { };
           };
         }
-	{
-	   home.packages = [ self.packages.x86_64-linux.neovim ];	
-	}
+	      {
+	         home.packages = [ self.packages.x86_64-linux.neovim ];	
+	      }
       ];
     };
 
-    # flake.homeConfigurations.developer = withSystem "x86_64-linux" ({ pkgs, ... }:
-    #   inputs.home-manager.lib.homeManagerConfiguration {
-    #     inherit pkgs;
-    #     modules = [
-    #       top-level.config.flake.homeModules.developer
-    #       top-level.config.flake.homeModules.bash
-    #       top-level.config.flake.homeModules.fcitx5
-    #     ];
-    #   });
+  flake.homeConfigurations.developer = withSystem "x86_64-linux" ({ pkgs, ... }:
+    let
+      args = import ./my-args.nix { inherit (pkgs) lib; } // {
+        system = "x86_64-linux";
+      }; 
+    in
+      inputs.home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          nixPkgsConfig
+          self.homeModules.developer
+          ./options
+          ./desktop-environment/sway
+          ./desktop-environment/waybar
+          ./configurations
+        ];
+        extraSpecialArgs = args;
+    });
 
   flake.nixosConfigurations.amd_b550i = withSystem "x86_64-linux" ({ pkgs, ... }: 
     let
@@ -47,6 +68,7 @@
     in
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
+        nixPkgsConfig
         ({ modulesPath, ... }: {
           imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
@@ -58,13 +80,7 @@
             "flakes"
           ];
           nixpkgs.hostPlatform = "x86_64-linux";
-          nixpkgs.overlays = [
-            inputs.nur.overlays.default
-          ];
-          nixpkgs.config.allowUnfree = true;
-          nixpkgs.config.problems.handlers = {
-            "gtk+".broken = "warn"; # or "ignore"
-          };
+
         })
         self.nixosModules.amd_b550i
         ./options
@@ -79,7 +95,6 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = args;
-          home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
           home-manager.users.developer = self.homeModules.developer;
         }
         {
