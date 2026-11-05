@@ -7,7 +7,7 @@ in
     enable = true;
     package = pkgs.rofi;
     theme = "${rofi-theme-tokyo-night}/share/rofi/themes/tokyo-night/tokyonight.rasi";
-    extraConfig = {
+    settings = {
       modi = "drun,window,run";
       icon-theme = "Papirus-Dark";
       show-icons = true;
