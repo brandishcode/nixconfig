@@ -3,7 +3,7 @@
 {
   monitor = [
     {
-      output = "DP-2";
+      output = "HDMI-A-2";
       inherit wallpaper;
       position = {
         x = 1080;
@@ -12,7 +12,7 @@
       transform = "normal";
     }
     {
-      output = "DP-3";
+      output = "DP-1";
       inherit wallpaper;
       position = {
         x = 0;
