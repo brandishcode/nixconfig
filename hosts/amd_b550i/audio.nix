@@ -18,8 +18,8 @@
     };
     services.mpd = {
       enable = true;
-      musicDirectory = "/documents/nixos/music";
-      network.listenAddress = "any";
+      settings.music_directory = "/documents/nixos/music";
+      settings.bind_to_address = "any";
       user = "developer";
       # settings = ''
       #   audio_output {
