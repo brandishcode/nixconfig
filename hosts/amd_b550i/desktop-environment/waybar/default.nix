@@ -73,9 +73,8 @@ in
             position = "bottom";
             height = 35;
             output = [
-              "DP-2"
-              "DP-3"
-              "HDMI-A-1"
+              "DP-1"
+              "HDMI-A-2"
             ];
             modules-left = [
               "tray"
