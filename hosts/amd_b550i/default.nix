@@ -80,7 +80,9 @@ in
             "flakes"
           ];
           nixpkgs.hostPlatform = "x86_64-linux";
-
+          environment.systemPackages = with pkgs; [ wireguard-tools ];
+          networking.firewall.enable = false;
+          networking.firewall.checkReversePath = false;
         })
         self.nixosModules.amd_b550i
         ./options
@@ -112,5 +114,6 @@ in
     ./graphics.nix
     ./fileSystems.nix
     ./audio.nix
+    ./vpn.nix
   ];
 }
