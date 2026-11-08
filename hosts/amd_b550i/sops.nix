@@ -13,7 +13,10 @@
       owner = "root";
       neededForUsers = true;
     };
-    sops.secrets."vpn/protonvpn" = {
+    sops.secrets."vpn/ph" = {
+      owner = "developer";
+    };
+    sops.secrets."vpn/jp" = {
       owner = "developer";
     };
   };
