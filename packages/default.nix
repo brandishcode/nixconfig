@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./neovim ];
+  imports = [ ./neovim ./calibre ];
 }

@@ -14,32 +14,33 @@ in
 {
   flake.homeModules.developer = { pkgs, ... }: {
     home.homeDirectory = "/home/developer";
-      home.username = "developer";
-      home.stateVersion = "25.05";
-      programs = {
-        home-manager.enable = true;
-        direnv = {
-          enable = true;
-          enableBashIntegration = true;
-          nix-direnv.enable = true;
-        };
+    home.username = "developer";
+    home.stateVersion = "25.05";
+    programs = {
+      home-manager.enable = true;
+      direnv = {
+        enable = true;
+        enableBashIntegration = true;
+        nix-direnv.enable = true;
       };
-      imports = [
-        inputs.sops-nix.homeManagerModules.sops
-        ./packages
-        {
-          config = {
-            sops.defaultSopsFile = ./secrets/homemanager.yaml;
-            sops.defaultSopsFormat = "yaml";
-            sops.age.keyFile = "/home/developer/.config/sops/age/keys.txt";
-            sops.secrets."git_token/public_repo" = { };
-          };
-        }
-	      {
-	         home.packages = [ self.packages.x86_64-linux.neovim ];	
-	      }
-      ];
     };
+    imports = [
+      inputs.sops-nix.homeManagerModules.sops
+      self.homeModules.calibre
+      ./packages
+      {
+        config = {
+          sops.defaultSopsFile = ./secrets/homemanager.yaml;
+          sops.defaultSopsFormat = "yaml";
+          sops.age.keyFile = "/home/developer/.config/sops/age/keys.txt";
+          sops.secrets."git_token/public_repo" = { };
+        };
+      }
+      {
+        home.packages = with pkgs; [ qbittorrent lutris self.packages.x86_64-linux.neovim ];	
+      }
+    ];
+  };
 
   flake.homeConfigurations.developer = withSystem "x86_64-linux" ({ pkgs, ... }:
     let
@@ -85,6 +86,7 @@ in
           networking.firewall.checkReversePath = false;
         })
         self.nixosModules.amd_b550i
+        self.nixosModules.udisks2
         ./options
         ./sops.nix
         ./system
