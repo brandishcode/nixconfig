@@ -24,6 +24,14 @@ in
         nix-direnv.enable = true;
       };
     };
+    programs.keepassxc = {
+      autostart = true;
+      enable = true;
+      settings = {
+        FdoSecrets.Enabled = true;
+      };
+    };
+    xdg.autostart.enable = true;
     imports = [
       inputs.sops-nix.homeManagerModules.sops
       self.homeModules.calibre
@@ -107,6 +115,7 @@ in
               auth include login
             '';
           };
+          programs.dconf.enable = true;
         }
       ];
     });
