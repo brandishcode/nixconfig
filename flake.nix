@@ -21,12 +21,11 @@
         ./hosts/test
         ./hosts/amd_b550i
 
-        # home-manager programs
-        ./home-manager/programs/bash.nix
-        ./home-manager/programs/fcitx5.nix
-
         # packages
         ./packages
+
+        # services
+        ./services
       ];
       systems = [ "x86_64-linux" "aarch64-darwin" ];
     };
