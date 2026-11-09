@@ -8,6 +8,14 @@ let
     "2a07:b944::2:2/128"
   ];
   dns = [ "10.2.0.1" "2a07:b944::2:1" ];
+  killSwitch = interface: {
+    postUp = ''
+      iptables -I OUTPUT ! -o ${interface} -m mark ! --mark $(wg show ${interface} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT  && ip6tables -I OUTPUT ! -o ${interface} -m mark ! --mark $(wg show ${interface} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+      '';
+    preDown = ''
+      iptables -D OUTPUT ! -o ${interface} -m mark ! --mark $(wg show ${interface} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o ${interface} -m mark ! --mark $(wg show ${interface} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
+      '';
+  };
   in
 {
   flake.nixosModules.amd_b550i = { config, ... }: {
@@ -25,13 +33,7 @@ let
               persistentKeepalive = 25;
            }
         ];
-        postUp = ''
-          iptables -I OUTPUT ! -o ${interface01} -m mark ! --mark $(wg show ${interface01} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT  && ip6tables -I OUTPUT ! -o ${interface01} -m mark ! --mark $(wg show ${interface01} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
-          '';
-        preDown = ''
-          iptables -D OUTPUT ! -o ${interface01} -m mark ! --mark $(wg show ${interface01} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o ${interface01} -m mark ! --mark $(wg show ${interface01} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
-          '';
-      };
+      } // (killSwitch interface01);
       ${interface02} =  {
         autostart = true;
         inherit address;
@@ -45,13 +47,7 @@ let
               persistentKeepalive = 25;
            }
         ];
-        postUp = ''
-          iptables -I OUTPUT ! -o ${interface02} -m mark ! --mark $(wg show ${interface02} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT  && ip6tables -I OUTPUT ! -o ${interface02} -m mark ! --mark $(wg show ${interface02} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
-          '';
-        preDown = ''
-          iptables -D OUTPUT ! -o ${interface02} -m mark ! --mark $(wg show ${interface02} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && ip6tables -D OUTPUT ! -o ${interface02} -m mark ! --mark $(wg show ${interface02} fwmark) -m addrtype ! --dst-type LOCAL -j REJECT
-          '';
-      };
+      } // (killSwitch interface02);
     };
   };
 }
