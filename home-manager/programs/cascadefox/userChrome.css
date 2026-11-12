@@ -1,8 +1,0 @@
-toolbarspring,
-#star-button-box,
-#reload-button,
-#firefox-view-button,
-#unified-extensions-button,
-toolbarbutton[data-extensionid="uBlock0@raymondhill.net"] {
-  display: none !important;
-}
