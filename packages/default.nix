@@ -2,7 +2,7 @@
 
 {
   imports = [ 
-    ./neovim
+    ./trezor
     ./yubikey
   ];
 }
