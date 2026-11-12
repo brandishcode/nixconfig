@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./neovim ./calibre ];
+  imports = [ 
+    ./neovim
+    ./yubikey
+  ];
 }

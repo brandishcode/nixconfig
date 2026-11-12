@@ -35,6 +35,7 @@ in
     imports = [
       inputs.sops-nix.homeManagerModules.sops
       self.homeModules.calibre
+      self.homeModules.yubikey
       ./packages
       {
         config = {
@@ -94,7 +95,7 @@ in
           networking.firewall.checkReversePath = false;
         })
         self.nixosModules.amd_b550i
-        self.nixosModules.udisks2
+        self.nixosModules.yubikey
         ./options
         ./sops.nix
         ./system
