@@ -19,5 +19,8 @@
     sops.secrets."vpn/jp" = {
       owner = "developer";
     };
+    sops.secrets."yubikey/id" = {
+      owner = "developer";
+    };
   };
 }
