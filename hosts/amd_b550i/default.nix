@@ -35,6 +35,7 @@ in
     imports = [
       inputs.sops-nix.homeManagerModules.sops
       self.homeModules.calibre
+      self.homeModules.trezor
       self.homeModules.yubikey
       ./packages
       {
