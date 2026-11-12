@@ -96,6 +96,7 @@ in
           networking.firewall.checkReversePath = false;
         })
         self.nixosModules.amd_b550i
+        self.nixosModules.calibre
         self.nixosModules.yubikey
         ./options
         ./sops.nix
