@@ -22,7 +22,7 @@ in
       keybindings = lib.mkOptionDefault (
         {
           "${modifier}+Shift+e" = "exec foot --app-id foot-ranger -T 'File Explorer' ranger";
-          "${modifier}+Shift+b" = "exec firefox --name firefox-surf";
+          "${modifier}+Shift+b" = "exec librewolf --name search-engine -P search-engine";
           "${modifier}+Control+Shift+a" =
             "move workspace to output ${(builtins.elemAt config.monitor 0).output}";
           "${modifier}+Control+Shift+o" =

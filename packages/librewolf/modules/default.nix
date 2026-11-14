@@ -1,3 +1,6 @@
 {
-  imports = [ ./profiles/searchengine.nix ];
+  imports = [
+    ./profiles/searchEngine.nix
+    ./profiles/youtube.nix
+  ];
 }

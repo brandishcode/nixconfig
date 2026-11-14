@@ -3,7 +3,7 @@
 {
   flake.homeModules.librewolf = { ... }: {
     programs.librewolf.profiles.search-engine = {
-      isDefault = true;
+      id = 0;
       bookmarks = {
         force = true;
         settings = [
@@ -47,6 +47,10 @@
             definedAliases = [ "@nxp" ];
           };
         };
+      };
+      settings = {
+        "browser.startup.homepage" = "https://github.com";
+        "layout.css.prefers-color-scheme.content-override" = 0;
       };
     };
   };
