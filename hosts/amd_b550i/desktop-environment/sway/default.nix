@@ -40,10 +40,10 @@
                 command = "--no-startup-id swaymsg 'workspace 0; exec foot --app-id main-foot'";
               }
               {
-                command = ''--no-startup-id swaymsg "workspace 1; exec firefox --name firefox-youtube --no-remote -P youtube https://www.youtube.com"'';
+                command = ''--no-startup-id swaymsg "workspace 1; exec librewolf --name firefox-youtube --no-remote https://www.youtube.com"'';
               }
               {
-                command = ''--no-startup-id swaymsg "workspace 9; exec firefox --name firefox-surf --no-remote"'';
+                command = ''--no-startup-id swaymsg "workspace 9; exec librewolf --name firefox-surf --no-remote"'';
               }
             ];
             window = {

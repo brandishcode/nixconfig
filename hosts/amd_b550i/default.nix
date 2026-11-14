@@ -24,19 +24,14 @@ in
         nix-direnv.enable = true;
       };
     };
-    programs.keepassxc = {
-      autostart = true;
-      enable = true;
-      settings = {
-        FdoSecrets.Enabled = true;
-      };
-    };
     xdg.autostart.enable = true;
     imports = [
       inputs.sops-nix.homeManagerModules.sops
       self.homeModules.calibre
       self.homeModules.trezor
       self.homeModules.yubikey
+      self.homeModules.librewolf
+      self.homeModules.keepassxc
       ./packages
       {
         config = {
@@ -118,6 +113,7 @@ in
               auth include login
             '';
           };
+          services.pcscd.enable = true;
           programs.dconf.enable = true;
         }
       ];

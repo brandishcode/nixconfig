@@ -8,7 +8,7 @@
     ./ncmpcpp
     ./git
     ./foot
-    ./firefox
+    # ./firefox
     ./fcitx5
     ./chromium
   ];
