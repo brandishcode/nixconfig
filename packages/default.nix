@@ -6,5 +6,7 @@
     ./calibre
     ./trezor
     ./yubikey
+    ./librewolf
+    ./keepassxc
   ];
 }
