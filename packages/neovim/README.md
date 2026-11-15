@@ -13,3 +13,9 @@ Configuration managed by nixvim
 - [vim-fugitive](https://github.com/tpope/vim-fugitive/)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
 - [undotree](https://github.com/mbbill/undotree/)
+
+### Language servers
+
+- nixd
+- marksman
+- tsc
