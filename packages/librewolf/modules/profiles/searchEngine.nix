@@ -22,7 +22,7 @@
         force = true;
         engines = {
           home-manager-options = {  
-            name = "Home Manager - Options";
+            name = "Home Manager";
             urls = [
               {
                 template = "https://home-manager-options.extranix.com";
@@ -48,6 +48,19 @@
             ];
             icon = "https://search.nixos.org/images/nixos-logomark-default-gradient-none.svg";
             definedAliases = [ "@nxp" ];
+          };
+          nixvim = {
+            name = "Nixvim";
+            urls = [
+              {
+                template = "https://nix-community.github.io/nixvim";
+                params = [
+                  { name = "search"; value = "{searchTerms}"; }
+                ];
+              }
+            ];
+            ico = "https://nix-community.github.io/nixvim/favicon-de23e50b.svg";
+            definedAliases = [ "@nxv" ];
           };
         };
       };
