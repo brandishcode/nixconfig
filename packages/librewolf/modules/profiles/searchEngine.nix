@@ -1,7 +1,10 @@
 { ... }:
 
 {
-  flake.homeModules.librewolf = { ... }: {
+  flake.homeModules.librewolf = { ... }: 
+  let 
+    commonSettings = import ./common/settings.nix;
+  in {
     programs.librewolf.profiles.search-engine = {
       id = 0;
       bookmarks = {
@@ -49,9 +52,8 @@
         };
       };
       settings = {
-        "browser.startup.homepage" = "https://github.com";
-        "layout.css.prefers-color-scheme.content-override" = 0;
-      };
+        "browser.startup.homepage" = "https://www.github.com";
+      } // commonSettings;
     };
   };
 }

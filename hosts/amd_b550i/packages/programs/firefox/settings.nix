@@ -1,5 +1,5 @@
 {
-  "browser.startup.homepage" = "https://github.com/brandishcode";
+  "browser.startup.homepage" = "about:newtab";
   "extensions.autoDisableScopes" = 0;
   "layout.css.prefers-color-scheme.content-override" = 1;
   "browser.cache.disk.enable" = false;
