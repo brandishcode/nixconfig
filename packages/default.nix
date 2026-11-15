@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ 
+  imports = [
     ./neovim
     ./calibre
     ./trezor
