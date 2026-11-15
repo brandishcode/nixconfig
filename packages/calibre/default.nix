@@ -33,9 +33,10 @@ in
 {
   imports = [ ./modules ];
 
-  perSystem = { pkgs, ... }:
+  perSystem =
+    { pkgs, ... }:
     let
-      noDRM_DeDRM = pkgs.fetchzip { 
+      noDRM_DeDRM = pkgs.fetchzip {
         name = "noDRM-DeDRM_tools";
         url = "https://github.com/noDRM/DeDRM_tools/releases/download/v10.0.9/DeDRM_tools_10.0.9.zip";
         hash = "sha256-3gMzURkI6U7tU3CDiK4Y81xGH0YxrMIVt2dt3JRpih4=";
@@ -45,13 +46,14 @@ in
         if ! ${pkgs.calibre}/bin/calibre-customize -l | grep -w DeDRM; then
           ${pkgs.calibre}/bin/calibre-customize -a ${noDRM_DeDRM}/DeDRM_plugin.zip
         fi
-        
+
         if ! ${pkgs.calibre}/bin/calibre-customize -l | grep -w "Obok DeDRM"; then
           ${pkgs.calibre}/bin/calibre-customize -a ${noDRM_DeDRM}/Obok_plugin.zip
         fi
       '';
-    in {
-    packages.calibre = pkgs.symlinkJoin {
+    in
+    {
+      packages.calibre = pkgs.symlinkJoin {
         name = "calibre";
         paths = [ pkgs.calibre ];
         nativeBuildInputs = [ pkgs.makeWrapper ];

@@ -1,4 +1,9 @@
-{ self, withSystem, inputs , ... }:
+{
+  self,
+  withSystem,
+  inputs,
+  ...
+}:
 
 let
   nixPkgsConfig = {
@@ -42,35 +47,42 @@ in
         };
       }
       {
-        home.packages = with pkgs; [ qbittorrent lutris self.packages.x86_64-linux.neovim ];	
+        home.packages = with pkgs; [
+          qbittorrent
+          lutris
+          self.packages.x86_64-linux.neovim
+        ];
       }
     ];
   };
 
-  flake.homeConfigurations.developer = withSystem "x86_64-linux" ({ pkgs, ... }:
+  flake.homeConfigurations.developer = withSystem "x86_64-linux" (
+    { pkgs, ... }:
     let
       args = import ./my-args.nix { inherit (pkgs) lib; } // {
         system = "x86_64-linux";
-      }; 
+      };
     in
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          nixPkgsConfig
-          self.homeModules.developer
-          ./options
-          ./desktop-environment/sway
-          ./desktop-environment/waybar
-          ./configurations
-        ];
-        extraSpecialArgs = args;
-    });
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        nixPkgsConfig
+        self.homeModules.developer
+        ./options
+        ./desktop-environment/sway
+        ./desktop-environment/waybar
+        ./configurations
+      ];
+      extraSpecialArgs = args;
+    }
+  );
 
-  flake.nixosConfigurations.amd_b550i = withSystem "x86_64-linux" ({ pkgs, ... }: 
+  flake.nixosConfigurations.amd_b550i = withSystem "x86_64-linux" (
+    { pkgs, ... }:
     let
       args = import ./my-args.nix { inherit (pkgs) lib; } // {
         system = "x86_64-linux";
-      }; 
+      };
     in
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
@@ -117,8 +129,9 @@ in
           programs.dconf.enable = true;
         }
       ];
-    });
-  
+    }
+  );
+
   imports = [
     ./boot.nix
     ./graphics.nix

@@ -2,8 +2,9 @@
 
 {
   perSystem = { system, ... }: {
-    packages.neovim = (inputs.nixvim.lib.evalNixvim {
-        inherit system; 
+    packages.neovim =
+      (inputs.nixvim.lib.evalNixvim {
+        inherit system;
 
         modules = [
           # defaults
@@ -29,6 +30,5 @@
 
     ./baseConfig.nix
   ];
-
 
 }
