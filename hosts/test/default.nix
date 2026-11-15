@@ -1,7 +1,8 @@
-top-level@{ withSystem, inputs , ... }:
+top-level@{ withSystem, inputs, ... }:
 
 {
-  flake.nixosConfigurations.test = withSystem "x86_64-linux" ({ pkgs, ... }: 
+  flake.nixosConfigurations.test = withSystem "x86_64-linux" (
+    { pkgs, ... }:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         ./hardware-configuration.nix
@@ -15,19 +16,22 @@ top-level@{ withSystem, inputs , ... }:
           };
         }
       ];
-    });
+    }
+  );
 
   flake.homeModules.test = { pkgs, ... }: {
     home.homeDirectory = "/home/test";
-      home.username = "test";
-      home.stateVersion = "26.11";
-      programs.git.enable = true;
-    };
-    flake.homeConfigurations.test = withSystem "x86_64-linux" ({ pkgs, ... }:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          top-level.config.flake.homeModules.test
-        ];
-      });
+    home.username = "test";
+    home.stateVersion = "26.11";
+    programs.git.enable = true;
+  };
+  flake.homeConfigurations.test = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [
+        top-level.config.flake.homeModules.test
+      ];
+    }
+  );
 }

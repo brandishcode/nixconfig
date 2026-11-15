@@ -9,7 +9,7 @@
       SetFocusWhenToggle = true;
     };
   };
-  
+
   opts = {
     undofile = true;
   };
