@@ -12,7 +12,7 @@ in
       SetFocusWhenToggle = true;
     };
   };
-  
+
   opts = {
     inherit undodir;
     undofile = true;
