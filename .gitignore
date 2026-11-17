@@ -1,2 +1,9 @@
+# direnv
+.direnv/*
+
+# git-hooks.nix
+.pre-commit-config.yaml
+
+# nix build
 result
 *.qcow2
