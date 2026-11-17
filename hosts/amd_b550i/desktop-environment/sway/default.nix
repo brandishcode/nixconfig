@@ -37,13 +37,13 @@
             startup = [
               { command = "fcitx5"; }
               {
-                command = "--no-startup-id swaymsg 'workspace 0; exec foot --app-id main-foot'";
+                command = "--no-startup-id swaymsg 'workspace 9; exec foot --app-id main-foot'";
               }
               {
                 command = ''--no-startup-id swaymsg "workspace 1; exec librewolf --name youtube -P youtube --no-remote"'';
               }
               {
-                command = ''--no-startup-id swaymsg "workspace 9; exec librewolf --name search-engine -P search-engine --no-remote"'';
+                command = ''--no-startup-id swaymsg "workspace 0; exec librewolf --name search-engine -P search-engine --no-remote"'';
               }
             ];
             window = {

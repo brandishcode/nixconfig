@@ -2,9 +2,9 @@
   theme = {
     wallpaper = ./wallpaper/tokyo_night_00.jpg;
     icons = {
-      terminal = "0";
+      terminal = "9";
       browser = "1";
-      devBrowser = "9";
+      devBrowser = "0";
     };
   };
 }
