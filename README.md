@@ -1,4 +1,4 @@
 # Personal Nix configuration
 
 ## Editors
-- neovim
+- [neovim](/packages/neovim/README.md)
