@@ -16,6 +16,6 @@ Configuration managed by nixvim
 
 ### Language servers
 
-- nixd
-- marksman
-- tsc
+- [nixd](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#nixd)
+- [marksman](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#marksman)
+- [ts_ls](https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls)
