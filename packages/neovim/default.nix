@@ -15,7 +15,7 @@
           self.modules.nixvim.plugin-fugitive
           self.modules.nixvim.plugin-undotree
           self.modules.nixvim.plugin-telescope
-          self.modules.nixvim.plugin-lsp-tsc
+          self.modules.nixvim.plugin-lsp-ts_ls
         ];
       }).config.build.package;
   };
@@ -26,7 +26,7 @@
     ./plugins/undotree.nix
     ./plugins/telescope.nix
 
-    ./servers/tsc.nix
+    ./servers/ts_ls.nix
 
     ./baseConfig.nix
   ];
