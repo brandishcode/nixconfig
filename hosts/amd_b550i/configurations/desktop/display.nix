@@ -6,8 +6,8 @@
       output = "HDMI-A-2";
       inherit wallpaper;
       position = {
-        x = 1080;
-        y = 480;
+        x = 1920;
+        y = 0;
       };
       transform = "normal";
     }
@@ -18,14 +18,14 @@
         x = 0;
         y = 0;
       };
-      transform = "90";
+      transform = "normal";
     }
     {
       output = "HDMI-A-1";
       inherit wallpaper;
       position = {
-        x = 0;
-        y = 1080;
+        x = 3840;
+        y = 145;
       };
       transform = "normal";
     }
