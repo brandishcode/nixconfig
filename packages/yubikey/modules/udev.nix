@@ -8,7 +8,7 @@
       enable = false;
       debug = true;
       mode = "challenge-response";
-      id = [ config.sops.secrets."yubikey/id" ];
+      id = [ config.sops.secrets."yubikey/five/serial" ];
     };
   };
 }
