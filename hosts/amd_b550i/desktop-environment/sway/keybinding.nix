@@ -24,9 +24,9 @@ in
           "${modifier}+Shift+e" = "exec foot --app-id foot-ranger -T 'File Explorer' ranger";
           "${modifier}+Shift+b" = "exec librewolf --name search-engine -P search-engine";
           "${modifier}+Control+Shift+a" =
-            "move workspace to output ${(builtins.elemAt config.monitor 0).output}";
-          "${modifier}+Control+Shift+o" =
             "move workspace to output ${(builtins.elemAt config.monitor 1).output}";
+          "${modifier}+Control+Shift+o" =
+            "move workspace to output ${(builtins.elemAt config.monitor 0).output}";
           "${modifier}+Control+Shift+e" =
             "move workspace to output ${(builtins.elemAt config.monitor 2).output}";
         }
