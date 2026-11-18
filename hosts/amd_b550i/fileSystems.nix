@@ -8,7 +8,7 @@
     };
 
     fileSystems."/boot" = {
-      device = "/dev/disk/by-label/boot";
+      device = "/dev/disk/by-label/mainboot";
       fsType = "vfat";
       options = [
         "fmask=0077"
