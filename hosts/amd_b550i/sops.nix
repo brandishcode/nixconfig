@@ -19,7 +19,7 @@
     sops.secrets."vpn/jp" = {
       owner = "developer";
     };
-    sops.secrets."yubikey/id" = {
+    sops.secrets."yubikey/fivec/serial" = {
       owner = "developer";
     };
   };
