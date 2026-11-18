@@ -4,7 +4,8 @@ let
   tweaks = {
     text = ''
       {
-        "title_series_sorting": "strictly_alphabetic"
+        "title_series_sorting": "strictly_alphabetic",
+        "save_template_title_series_sorting": "strictly_alphabetic"
       }
     '';
     force = true;
