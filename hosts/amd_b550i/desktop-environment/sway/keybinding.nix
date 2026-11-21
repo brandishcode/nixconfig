@@ -23,6 +23,7 @@ in
         {
           "${modifier}+Shift+e" = "exec foot --app-id foot-ranger -T 'File Explorer' ranger";
           "${modifier}+Shift+b" = "exec librewolf --name search-engine -P search-engine";
+          "${modifier}+Shift+y" = "exec librewolf --name search-engine -P youtube";
           "${modifier}+Control+Shift+a" =
             "move workspace to output ${(builtins.elemAt config.monitor 1).output}";
           "${modifier}+Control+Shift+o" =
