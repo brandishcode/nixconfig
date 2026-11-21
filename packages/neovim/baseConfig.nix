@@ -82,6 +82,7 @@
       };
       colorizer.enable = true;
       transparent.enable = true;
+      markview.enable = true;
     };
   };
 }
