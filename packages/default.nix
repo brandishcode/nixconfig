@@ -8,5 +8,6 @@
     ./yubikey
     ./librewolf
     ./keepassxc
+    ./ranger
   ];
 }

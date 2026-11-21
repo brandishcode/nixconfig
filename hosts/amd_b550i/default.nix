@@ -37,6 +37,7 @@ in
       self.homeModules.yubikey
       self.homeModules.librewolf
       self.homeModules.keepassxc
+      self.homeModules.ranger
       ./packages
       {
         config = {

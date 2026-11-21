@@ -4,7 +4,6 @@
     ./tmux
     ./ssh
     ./rofi
-    ./ranger
     ./ncmpcpp
     ./git
     ./foot
