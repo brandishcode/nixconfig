@@ -61,6 +61,11 @@
       }
       {
         mode = "n";
+        action = "<Cmd>Rex<Cr>";
+        key = "<Leader>W";
+      }
+      {
+        mode = "n";
         action = "<Cmd>lua vim.diagnostic.open_float()<Cr>";
         key = "<Leader>vd";
       }
