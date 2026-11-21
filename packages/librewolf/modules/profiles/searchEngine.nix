@@ -6,7 +6,7 @@
     let
       commonSettings = import ./common/settings.nix;
       searchEngineNixDocs = import ./searchEngines/nixDocs.nix;
-      bookmarks = import ./bookmarks/nixBookmarks.nix;
+      bookmarks = (import ./bookmarks/nixBookmarks.nix) ++ (import ./bookmarks/protonBookmarks.nix);
     in
     {
       programs.librewolf.profiles.search-engine = {
