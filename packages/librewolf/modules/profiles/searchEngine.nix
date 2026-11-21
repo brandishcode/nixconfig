@@ -6,6 +6,7 @@
     let
       commonSettings = import ./common/settings.nix;
       searchEngineNixDocs = import ./searchEngines/nixDocs.nix;
+      bookmarks = import ./bookmarks/nixBookmarks.nix;
     in
     {
       programs.librewolf.profiles.search-engine = {
@@ -19,7 +20,8 @@
               keyword = "gh";
               url = "https://github.com/brandishcode";
             }
-          ];
+          ]
+          ++ bookmarks;
         };
         search = {
           force = true;
