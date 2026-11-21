@@ -28,7 +28,7 @@
           engines = { } // searchEngineNixDocs;
         };
         settings = {
-          "browser.startup.homepage" = "https://www.github.com";
+          "browser.startup.homepage" = "about:blank";
         }
         // commonSettings;
       };
