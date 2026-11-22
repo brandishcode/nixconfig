@@ -9,5 +9,7 @@
     ./librewolf
     ./keepassxc
     ./ranger
+    ./bash
+    ./tmux
   ];
 }

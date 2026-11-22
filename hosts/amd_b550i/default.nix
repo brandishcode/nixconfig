@@ -38,6 +38,8 @@ in
       self.homeModules.librewolf
       self.homeModules.keepassxc
       self.homeModules.ranger
+      self.homeModules.bash
+      self.homeModules.tmux
       ./packages
       {
         config = {

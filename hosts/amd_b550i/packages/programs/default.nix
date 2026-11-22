@@ -1,7 +1,5 @@
 {
   imports = [
-    ./bash
-    ./tmux
     ./ssh
     ./rofi
     ./ncmpcpp
