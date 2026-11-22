@@ -34,6 +34,7 @@
       ];
       perSystem = { pkgs, config, ... }: {
         devShells.default = pkgs.mkShell {
+          buildInputs = with pkgs; [ sops ];
           shellHook = ''
             ${config.pre-commit.shellHook}
           '';

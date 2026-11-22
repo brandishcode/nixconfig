@@ -45,6 +45,8 @@ in
           sops.defaultSopsFormat = "yaml";
           sops.age.keyFile = "/home/developer/.config/sops/age/keys.txt";
           sops.secrets."git_token/public_repo" = { };
+          sops.secrets."git/email" = { };
+          sops.secrets."git/name" = { };
         };
       }
       {
