@@ -21,6 +21,10 @@
         inputs.treefmt-nix.flakeModule
         inputs.git-hooks-nix.flakeModule
 
+        # options
+        ./options/theme.nix
+        ./options/themes/tokyonight.nix
+
         # nixos configurations per host
         ./hosts/test
         ./hosts/amd_b550i

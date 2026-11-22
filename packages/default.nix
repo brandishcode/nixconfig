@@ -14,5 +14,6 @@
     ./tmux
     ./sway
     ./rofi
+    ./waybar
   ];
 }

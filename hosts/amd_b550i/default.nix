@@ -29,6 +29,8 @@ in
     xdg.autostart.enable = true;
     imports = [
       inputs.sops-nix.homeManagerModules.sops
+      self.homeModules.theme
+      self.homeModules.theme-tokyonight
       self.homeModules.calibre
       self.homeModules.trezor
       self.homeModules.yubikey
@@ -39,6 +41,7 @@ in
       self.homeModules.tmux
       self.homeModules.fastfetch
       self.homeModules.swayNixos
+      self.homeModules.waybar
       self.homeModules.rofi
       ./packages
       {
