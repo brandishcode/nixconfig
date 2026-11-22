@@ -15,5 +15,6 @@
     ./sway
     ./rofi
     ./waybar
+    ./foot
   ];
 }

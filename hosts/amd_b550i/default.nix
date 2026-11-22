@@ -43,6 +43,7 @@ in
       self.homeModules.swayNixos
       self.homeModules.waybar
       self.homeModules.rofi
+      self.homeModules.foot
       ./packages
       {
         config = {
