@@ -12,5 +12,6 @@
     ./fastfetch
     ./bash
     ./tmux
+    ./sway
   ];
 }

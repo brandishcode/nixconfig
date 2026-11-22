@@ -41,6 +41,7 @@ in
       self.homeModules.bash
       self.homeModules.tmux
       self.homeModules.fastfetch
+      self.homeModules.swayNixos
       ./packages
       {
         config = {
@@ -111,6 +112,7 @@ in
         self.nixosModules.amd_b550i
         self.nixosModules.calibre
         self.nixosModules.yubikey
+        self.nixosModules.swayNixos
         ./options
         ./sops.nix
         ./system
