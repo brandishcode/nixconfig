@@ -20,7 +20,7 @@ in
   flake.homeModules.developer = { pkgs, ... }: {
     home.homeDirectory = "/home/developer";
     home.username = "developer";
-    home.stateVersion = "25.05";
+    home.stateVersion = "26.11";
     programs = {
       home-manager.enable = true;
       direnv = {
@@ -94,7 +94,7 @@ in
           imports = [
             (modulesPath + "/installer/scan/not-detected.nix")
           ];
-          system.stateVersion = "24.05";
+          system.stateVersion = "26.11";
           nix.settings.bash-prompt-prefix = "\\[\\033[43m\\]\\[\\033[1;30m\\](nix-develop)";
           nix.settings.experimental-features = [
             "nix-command"
