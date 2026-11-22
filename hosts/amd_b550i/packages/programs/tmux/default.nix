@@ -9,6 +9,9 @@
           exec tmux new-session -A -s $USER >/dev/null 2>&1
         fi
       '';
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
     };
     tmux = {
       enable = true;
