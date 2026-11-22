@@ -1,7 +1,6 @@
 {
   imports = [
     ./ssh
-    ./rofi
     ./ncmpcpp
     ./git
     ./foot

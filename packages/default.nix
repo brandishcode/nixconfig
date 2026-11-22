@@ -13,5 +13,6 @@
     ./bash
     ./tmux
     ./sway
+    ./rofi
   ];
 }

@@ -42,6 +42,7 @@ in
       self.homeModules.tmux
       self.homeModules.fastfetch
       self.homeModules.swayNixos
+      self.homeModules.rofi
       ./packages
       {
         config = {
