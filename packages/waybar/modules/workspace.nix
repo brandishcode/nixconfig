@@ -9,10 +9,10 @@
         all-outputs = true;
         format = ''<span size="x-large">{icon}</span>'';
         format-icons = {
-          "0" = "󱝆 ";
+          "0" = " ";
           "1" = "󰗃 ";
           "2" = "󰌆";
-          "9" = " ";
+          "9" = "󱝆 ";
         };
       };
     };

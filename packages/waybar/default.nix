@@ -38,10 +38,10 @@
           };
         };
         style = pkgs.replaceVars ./style.css {
-          foreground = config.theme.colors.foreground;
-          green = config.theme.colors.green;
-          magenta = config.theme.colors.magenta;
-          red = config.theme.colors.red;
+          foreground = config.theme2.colors.foreground;
+          green = config.theme2.colors.green;
+          magenta = config.theme2.colors.magenta;
+          red = config.theme2.colors.red;
         };
       };
     };

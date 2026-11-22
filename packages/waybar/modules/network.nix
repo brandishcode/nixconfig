@@ -15,8 +15,8 @@
     {
       config = {
         programs.waybar.settings.mainBar.network = {
-          format-wifi = createFormat "󰖩 " config.theme.colors.green;
-          format-ethernet = createFormat "󰈀 " config.theme.colors.green;
+          format-wifi = createFormat "󰖩 " config.theme2.colors.green;
+          format-ethernet = createFormat "󰈀 " config.theme2.colors.green;
           tooltip-format-ethernet = lib.concatStrings [ "{ipaddr}" ];
         };
       };

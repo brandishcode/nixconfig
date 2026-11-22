@@ -8,7 +8,7 @@
       config = {
         programs.waybar.settings.mainBar.pulseaudio = {
           format = lib.concatStrings [
-            ''<span size="large" color="${config.theme.colors.magenta}">{icon}</span>''
+            ''<span size="large" color="${config.theme2.colors.magenta}">{icon}</span>''
             "<span> {volume}%</span>"
           ];
           format-icons = {
