@@ -40,6 +40,7 @@ in
       self.homeModules.ranger
       self.homeModules.bash
       self.homeModules.tmux
+      self.homeModules.fastfetch
       ./packages
       {
         config = {

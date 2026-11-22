@@ -9,6 +9,7 @@
     ./librewolf
     ./keepassxc
     ./ranger
+    ./fastfetch
     ./bash
     ./tmux
   ];
