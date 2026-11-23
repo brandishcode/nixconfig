@@ -32,6 +32,7 @@
               "disk#documents"
               "memory"
               "network"
+              "bluetooth"
               "clock#calendar"
               "clock"
             ];
