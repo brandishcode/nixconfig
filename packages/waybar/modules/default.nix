@@ -7,5 +7,6 @@
     ./network.nix
     ./pulseaudio.nix
     ./workspace.nix
+    ./bluetooth.nix
   ];
 }

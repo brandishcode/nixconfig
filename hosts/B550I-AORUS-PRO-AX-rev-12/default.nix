@@ -43,6 +43,7 @@ in
       self.homeModules.swayNixos
       self.homeModules.waybar
       self.homeModules.rofi
+      self.homeModules.rofi-bluetooth
       self.homeModules.foot
       self.homeModules.neovim
       ./packages
