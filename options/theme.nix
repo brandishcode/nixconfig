@@ -4,6 +4,20 @@
   flake.homeModules.theme = { lib, ... }: {
     options = {
       theme2 = {
+        name = lib.mkOption {
+          default = "tokyonight";
+        };
+        backgrounds = lib.mkOption {
+          default = { };
+        };
+        icons = lib.mkOption {
+          default = {
+            terminal = "";
+            browser = "";
+            youtube = "";
+            keepassxc = "";
+          };
+        };
         colors = lib.mkOption {
           default = {
             background = "";

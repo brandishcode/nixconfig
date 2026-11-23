@@ -2,6 +2,8 @@
 
 {
   flake.homeModules.theme-tokyonight = { lib, ... }: {
+    theme2.name = "tokyonight";
+    theme2.backgrounds.tokyonight = ../wallpapers/tokyo_night_00.jpg;
     theme2.colors = lib.mkDefault {
       background = "#1a1b26";
       foreground = "#c0caf5";
