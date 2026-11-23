@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.amd_b550i = { modulesPath, ... }: {
+  flake.nixosModules.B550I-AORUS-PRO-AX-rev-12 = { modulesPath, ... }: {
     imports = [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];

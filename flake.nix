@@ -27,7 +27,7 @@
 
         # nixos configurations per host
         ./hosts/test
-        ./hosts/amd_b550i
+        ./hosts/B550I-AORUS-PRO-AX-rev-12
 
         # packages
         ./packages

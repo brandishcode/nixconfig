@@ -77,7 +77,7 @@ in
     }
   );
 
-  flake.nixosConfigurations.amd_b550i = withSystem "x86_64-linux" (
+  flake.nixosConfigurations.B550I-AORUS-PRO-AX-rev-12 = withSystem "x86_64-linux" (
     { pkgs, ... }:
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
@@ -97,7 +97,7 @@ in
           networking.firewall.enable = false;
           networking.firewall.checkReversePath = false;
         })
-        self.nixosModules.amd_b550i
+        self.nixosModules.B550I-AORUS-PRO-AX-rev-12
         self.nixosModules.calibre
         self.nixosModules.yubikey
         self.nixosModules.swayNixos

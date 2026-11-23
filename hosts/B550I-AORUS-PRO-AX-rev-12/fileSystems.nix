@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.amd_b550i = { ... }: {
+  flake.nixosModules.B550I-AORUS-PRO-AX-rev-12 = { ... }: {
     fileSystems."/" = {
       device = "/dev/disk/by-label/nixos";
       fsType = "ext4";

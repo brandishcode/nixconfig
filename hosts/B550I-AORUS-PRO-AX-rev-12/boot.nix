@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.amd_b550i = {
+  flake.nixosModules.B550I-AORUS-PRO-AX-rev-12 = {
     boot.loader.systemd-boot.enable = true;
     boot.loader.systemd-boot.extraEntries = {
       "arch.conf" = ''

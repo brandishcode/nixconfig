@@ -21,7 +21,7 @@ let
   };
 in
 {
-  flake.nixosModules.amd_b550i = { config, ... }: {
+  flake.nixosModules.B550I-AORUS-PRO-AX-rev-12 = { config, ... }: {
     networking.wg-quick.interfaces = {
       ${interface01} = {
         autostart = false;
