@@ -1,11 +1,10 @@
 { self, inputs, ... }:
 
 {
-  perSystem = { system, ... }: {
+  perSystem = { pkgs, ... }: {
     packages.neovim =
       (inputs.nixvim.lib.evalNixvim {
-        inherit system;
-
+        system = pkgs.system;
         modules = [
           # defaults
           self.modules.nixvim.base-config
@@ -22,8 +21,8 @@
 
   flake.homeModules.neovim =
     {
+      pkgs,
       lib,
-      system,
       config,
       ...
     }:
@@ -32,7 +31,7 @@
         programs.myneovim = lib.mkOption {
           default = {
             enable = true;
-            package = self.packages.${system}.neovim;
+            package = self.packages.${pkgs.system}.neovim;
             type = lib.types.attrs;
             description = ''
               Personal neovim package using nixvim

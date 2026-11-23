@@ -60,6 +60,7 @@ in
         home.packages = with pkgs; [
           qbittorrent
           lutris
+          vlc
         ];
       }
     ];
@@ -67,32 +68,17 @@ in
 
   flake.homeConfigurations.developer = withSystem "x86_64-linux" (
     { pkgs, ... }:
-    let
-      args = import ./my-args.nix { inherit (pkgs) lib; } // {
-        system = "x86_64-linux";
-      };
-    in
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       modules = [
         nixPkgsConfig
         self.homeModules.developer
-        ./options
-        ./desktop-environment/sway
-        ./desktop-environment/waybar
-        ./configurations
       ];
-      extraSpecialArgs = args;
     }
   );
 
   flake.nixosConfigurations.amd_b550i = withSystem "x86_64-linux" (
     { pkgs, ... }:
-    let
-      args = import ./my-args.nix { inherit (pkgs) lib; } // {
-        system = "x86_64-linux";
-      };
-    in
     inputs.nixpkgs.lib.nixosSystem {
       modules = [
         nixPkgsConfig
@@ -115,18 +101,14 @@ in
         self.nixosModules.calibre
         self.nixosModules.yubikey
         self.nixosModules.swayNixos
-        ./options
+        self.nixosModules.sddm
         ./sops.nix
         ./system
-        ./desktop-environment
-        ./configurations
-        { _module.args = args; }
         inputs.sops-nix.nixosModules.sops
         inputs.home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = args;
           home-manager.users.developer = self.homeModules.developer;
         }
         {

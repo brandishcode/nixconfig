@@ -2,12 +2,12 @@
 
 {
   imports = [ ./modules ];
-  flake.homeModules.rofi = { pkgs, system, ... }: {
+  flake.homeModules.rofi = { pkgs, ... }: {
     programs.rofi = {
       enable = true;
       package = pkgs.rofi;
       theme = "${
-        self.packages.${system}.rofi-theme-tokyo-night
+        self.packages.${pkgs.system}.rofi-theme-tokyo-night
       }/share/rofi/themes/tokyo-night/tokyonight.rasi";
       settings = {
         modi = "drun,window,run";

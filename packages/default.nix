@@ -16,5 +16,6 @@
     ./rofi
     ./waybar
     ./foot
+    ./sddm
   ];
 }

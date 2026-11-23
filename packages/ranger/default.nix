@@ -11,10 +11,10 @@
     });
   };
 
-  flake.homeModules.ranger = { pkgs, system, ... }: {
+  flake.homeModules.ranger = { pkgs, ... }: {
     programs.ranger = {
       enable = true;
-      package = self.packages.${system}.ranger;
+      package = self.packages.${pkgs.system}.ranger;
       extraConfig = ''
         set preview_images_method sixel
         set use_preview_script true

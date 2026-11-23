@@ -65,9 +65,9 @@ in
     };
 
   # Per user definitions
-  flake.homeModules.calibre = { system, ... }: {
+  flake.homeModules.calibre = { pkgs, ... }: {
     programs.calibre.enable = true;
-    programs.calibre.package = self.packages.${system}.calibre;
+    programs.calibre.package = self.packages.${pkgs.system}.calibre;
     xdg.configFile = {
       "calibre/tweaks.json" = tweaks;
       "calibre/save_to_disk.py.json" = saveToDisk;
