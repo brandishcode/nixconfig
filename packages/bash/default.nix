@@ -14,7 +14,7 @@
           bash = {
             enable = true;
             sessionVariables = {
-              EDITOR = "nvim";
+              EDITOR = lib.mkIf (config.programs.neovim.enable && config.programs.myneovim.enable) "nvim";
             };
             initExtra = ''
               source ${pkgs.git}/share/bash-completion/completions/git-prompt.sh

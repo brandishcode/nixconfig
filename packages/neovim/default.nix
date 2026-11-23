@@ -20,6 +20,31 @@
       }).config.build.package;
   };
 
+  flake.homeModules.neovim =
+    {
+      lib,
+      system,
+      config,
+      ...
+    }:
+    {
+      options = {
+        programs.myneovim = lib.mkOption {
+          default = {
+            enable = true;
+            package = self.packages.${system}.neovim;
+            type = lib.types.attrs;
+            description = ''
+              Personal neovim package using nixvim
+            '';
+          };
+        };
+      };
+      config = {
+        home.packages = lib.mkIf config.programs.myneovim.enable [ config.programs.myneovim.package ];
+      };
+    };
+
   imports = [
     ./plugins/cmp.nix
     ./plugins/fugitive.nix

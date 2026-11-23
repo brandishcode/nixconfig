@@ -44,6 +44,7 @@ in
       self.homeModules.waybar
       self.homeModules.rofi
       self.homeModules.foot
+      self.homeModules.neovim
       ./packages
       {
         config = {
@@ -59,7 +60,6 @@ in
         home.packages = with pkgs; [
           qbittorrent
           lutris
-          self.packages.x86_64-linux.neovim
         ];
       }
     ];
