@@ -5,6 +5,24 @@
     toolbar = true;
     bookmarks = [
       {
+        name = "nix language";
+        tags = [
+          "nix"
+          "programming language"
+        ];
+        keyword = "nix-language";
+        url = "https://nix.dev/tutorials/nix-language";
+      }
+      {
+        name = "nix dev";
+        tags = [
+          "nix"
+          "wiki"
+        ];
+        keyword = "nix-dev-reference";
+        url = "https://nix.dev/manual/nix/2.36/";
+      }
+      {
         name = "flake-parts.nix";
         tags = [
           "nix"
