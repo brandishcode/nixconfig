@@ -32,11 +32,12 @@
           default = {
             enable = true;
             package = self.packages.${pkgs.system}.neovim;
-            type = lib.types.attrs;
-            description = ''
-              Personal neovim package using nixvim
-            '';
+
           };
+          type = lib.types.attrs;
+          description = ''
+            Personal neovim package using nixvim
+          '';
         };
       };
       config = {
