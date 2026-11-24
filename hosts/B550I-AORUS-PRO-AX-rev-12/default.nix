@@ -46,6 +46,7 @@ in
       self.homeModules.rofi-bluetooth
       self.homeModules.foot
       self.homeModules.neovim
+      self.homeModules.git
       ./packages
       {
         config = {
