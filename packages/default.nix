@@ -3,19 +3,21 @@
 {
   imports = [
     ./neovim
-    ./calibre
-    ./trezor
-    ./yubikey
-    ./librewolf
-    ./keepassxc
-    ./ranger
-    ./fastfetch
     ./bash
-    ./tmux
-    ./sway
-    ./rofi
-    ./waybar
+    ./calibre
+    ./fastfetch
     ./foot
+    ./git
+    ./keepassxc
+    ./librewolf
+    ./ranger
+    ./rofi
+    ./rofiBluetooth
     ./sddm
+    ./sway
+    ./tmux
+    ./trezor
+    ./waybar
+    ./yubikey
   ];
 }
