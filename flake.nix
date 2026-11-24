@@ -40,12 +40,24 @@
         "aarch64-darwin"
       ];
       perSystem = { pkgs, config, ... }: {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [ sops ];
-          shellHook = ''
-            ${config.pre-commit.shellHook}
-          '';
-        };
+        devShells.default =
+          let
+            # nixos rebuild scripts
+            inherit (import ./scripts/nixos-rebuild-scripts.nix)
+              nixosRebuildTest
+              nixosRebuildSwitchProfile
+              ;
+          in
+          pkgs.mkShell {
+            buildInputs = [
+              pkgs.sops
+              (pkgs.callPackage nixosRebuildTest { })
+              (pkgs.callPackage nixosRebuildSwitchProfile { })
+            ];
+            shellHook = ''
+              ${config.pre-commit.shellHook}
+            '';
+          };
         treefmt = {
           programs.nixfmt.enable = true;
         };
