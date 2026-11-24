@@ -29,6 +29,9 @@
         ./hosts/test
         ./hosts/B550I-AORUS-PRO-AX-rev-12
 
+        # input managers
+        ./inputManagers
+
         # packages
         ./packages
       ];

@@ -29,6 +29,7 @@ in
     xdg.autostart.enable = true;
     imports = [
       inputs.sops-nix.homeManagerModules.sops
+      self.homeModules.fcitx5
       self.homeModules.theme
       self.homeModules.theme-tokyonight
       self.homeModules.calibre
