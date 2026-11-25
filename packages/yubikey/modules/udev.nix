@@ -1,14 +1,17 @@
 { ... }:
 
 {
-  flake.nixosModules.yubikey = { pkgs, config, ... }: {
+  flake.nixosModules.yubikey = { pkgs, ... }: {
+    security.pam.services = {
+      login.u2f.enable = true;
+      sudo.u2f.enable = true;
+    };
     services.udev.packages = [ pkgs.yubikey-personalization ];
 
     security.pam.yubico = {
-      enable = false;
+      enable = true;
       debug = true;
       mode = "challenge-response";
-      id = [ config.sops.secrets."yubikey/five/serial" ];
     };
   };
 }
